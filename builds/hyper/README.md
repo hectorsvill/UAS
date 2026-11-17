@@ -12,12 +12,11 @@
 | RX | ExpressLRS 2.4 GHz, RadioMaster Pocket. Receiver is on the AIO or a separate module (TBD) |
 | Battery | 3S, capacity TBD |
 | Props | TBD. 3-inch 2-blade, 3018/3020 class. 5022KV is high for aggressive triblades on 3S |
-| AUW | TBD. Weigh the finished aircraft before the first flight. AUW is what gets checked against the 250 g Remote ID threshold |
-| Remote ID | TBD (built-in, module, or none). Not chosen yet, because AUW is unknown. Required if the aircraft is registered or AUW is over 250 g |
+| AUW | TBD. I will weigh it before the first flight so I know whether a recreational flight crosses 250 g. |
+| Operating mode | Recreational by default. I only fly this aircraft under Part 107 for a project. |
+| Remote ID | I have not chosen the hardware yet. If I have to broadcast, I will use built-in Remote ID or a broadcast module. On a recreational flight under 250 g, I do not register this aircraft and I do not need Remote ID. On a recreational flight at 250 g or over, I register it and broadcast. On a Part 107 flight, I register it and broadcast no matter what it weighs. |
 | Betaflight config | TBD. Link `configs/betaflight/hyper/` here once a dump exists |
-| Brain note | The full parts list with prices lives in Hector's private notes, not in this repo |
-
-The full parts list with prices lives in Hector's private notes, not here.
+| Brain note | The full parts list with prices lives in my private notes |
 
 ## Build log
 

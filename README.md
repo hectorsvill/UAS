@@ -16,6 +16,19 @@ Instagram: [@stoiczfpv](https://instagram.com/stoiczfpv)
 
 Mark4 images: [F405.webp](builds/mark4-7inch/images/F405.webp), [gps-1.webp](builds/mark4-7inch/images/gps-1.webp), [gps-2.webp](builds/mark4-7inch/images/gps-2.webp), [gps3.webp](builds/mark4-7inch/images/gps3.webp), [gps-4.webp](builds/mark4-7inch/images/gps-4.webp).
 
+## Remote ID
+
+I fly recreationally by default and only fly under Part 107 for project work. Recreational flights fall under the Exception for Limited Recreational Operations (49 USC 44809), and I carry proof of TRUST on those flights.
+
+If I am flying recreationally and the aircraft is under 250 g all-up, I do not register it and I do not broadcast Remote ID. Once a recreational aircraft reaches 250 g, I register it and broadcast Remote ID with built-in equipment or a broadcast module.
+
+If the flight is Part 107, I register the aircraft and broadcast Remote ID no matter the weight.
+
+This is not legal advice. Check the current FAA rules.
+
+- [FAA Remote ID](https://www.faa.gov/uas/getting_started/remote_id)
+- [FAA recreational flyers](https://www.faa.gov/uas/recreational_flyers)
+
 ## Configs
 
 Betaflight backups are in [configs/betaflight/](configs/betaflight/). Each directory uses the name already in the filename.
