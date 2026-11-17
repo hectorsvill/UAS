@@ -18,16 +18,19 @@ Mark4 images: [F405.webp](builds/mark4-7inch/images/F405.webp), [gps-1.webp](bui
 
 ## Remote ID
 
-I fly recreationally by default and only fly under Part 107 for project work. Recreational flights fall under the Exception for Limited Recreational Operations (49 USC 44809), and I carry proof of TRUST on those flights.
+I fly recreationally by default and only fly under Part 107 for project work.
 
-If I am flying recreationally and the aircraft is under 250 g all-up, I do not register it and I do not broadcast Remote ID. Once a recreational aircraft reaches 250 g, I register it and broadcast Remote ID with built-in equipment or a broadcast module.
+Recreational flights fall under the Exception for Limited Recreational Operations (49 USC 44809). On those flights I carry proof of TRUST, follow a community-based organization's safety guidelines, get airspace authorization (LAANC) before flying in controlled airspace, and stay at or below 400 ft AGL in uncontrolled airspace.
 
-If the flight is Part 107, I register the aircraft and broadcast Remote ID no matter the weight.
+If I'm flying recreationally and the aircraft weighs 250 g (0.55 lb) or less all-up, I don't register it and don't broadcast Remote ID. If a recreational aircraft weighs more than 250 g, I register it, mark the registration number on the outside, and broadcast Remote ID with built-in Standard Remote ID or a broadcast module. The only exception is flying at an FAA-Recognized Identification Area (FRIA), where I stay within the boundary and keep the aircraft in sight.
+
+Under Part 107, I register every aircraft and broadcast Remote ID no matter what it weighs.
 
 This is not legal advice. Check the current FAA rules.
 
 - [FAA Remote ID](https://www.faa.gov/uas/getting_started/remote_id)
 - [FAA recreational flyers](https://www.faa.gov/uas/recreational_flyers)
+- [FAA-Recognized Identification Areas](https://www.faa.gov/uas/getting_started/remote_id/fria)
 
 ## Configs
 

@@ -12,9 +12,9 @@
 | RX | ExpressLRS 2.4 GHz, RadioMaster Pocket. Receiver is on the AIO or a separate module (TBD) |
 | Battery | 3S, capacity TBD |
 | Props | TBD. 3-inch 2-blade, 3018/3020 class. 5022KV is high for aggressive triblades on 3S |
-| AUW | TBD. I will weigh it before the first flight so I know whether a recreational flight crosses 250 g. |
+| AUW | TBD. I will weigh it before the first flight. On a recreational flight, 250 g (0.55 lb) or less means I don't register or broadcast Remote ID. More than 250 g means I register, mark, and broadcast, or fly at a FRIA. |
 | Operating mode | Recreational by default. I only fly this aircraft under Part 107 for a project. |
-| Remote ID | I have not chosen the hardware yet. If I have to broadcast, I will use built-in Remote ID or a broadcast module. On a recreational flight under 250 g, I do not register this aircraft and I do not need Remote ID. On a recreational flight at 250 g or over, I register it and broadcast. On a Part 107 flight, I register it and broadcast no matter what it weighs. |
+| Remote ID | I have not chosen the hardware yet. If I fly it recreationally at 250 g (0.55 lb) or less, I don't register it and don't broadcast Remote ID. If it weighs more than 250 g, I register it, mark the registration number on the outside, and broadcast with built-in Standard Remote ID or a module, unless I fly at a FRIA, stay inside the boundary, and keep it in sight. Under Part 107 I register and broadcast at any weight. |
 | Betaflight config | TBD. Link `configs/betaflight/hyper/` here once a dump exists |
 | Brain note | The full parts list with prices lives in my private notes |
 
