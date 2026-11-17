@@ -12,6 +12,7 @@ Instagram: [@stoiczfpv](https://instagram.com/stoiczfpv)
 | --- | --- | --- |
 | [Mark4 7-inch](builds/mark4-7inch/README.md) | In progress | [Build log](builds/mark4-7inch/build-log.md), [images](builds/mark4-7inch/images/) |
 | [Glide5](builds/glide5-deprecated/README.md) | Retired | [Glide5.png](builds/glide5-deprecated/images/Glide5.png) |
+| [Hyper](builds/hyper/README.md) | Planning | Collecting spare parts. 3-inch 3S on a SoloGood Fi-135 |
 
 Mark4 images: [F405.webp](builds/mark4-7inch/images/F405.webp), [gps-1.webp](builds/mark4-7inch/images/gps-1.webp), [gps-2.webp](builds/mark4-7inch/images/gps-2.webp), [gps3.webp](builds/mark4-7inch/images/gps3.webp), [gps-4.webp](builds/mark4-7inch/images/gps-4.webp).
 
