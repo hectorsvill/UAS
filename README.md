@@ -12,8 +12,25 @@ Instagram: [@stoiczfpv](https://instagram.com/stoiczfpv)
 | --- | --- | --- |
 | [Mark4 7-inch](builds/mark4-7inch/README.md) | In progress | [Build log](builds/mark4-7inch/build-log.md), [images](builds/mark4-7inch/images/) |
 | [Glide5](builds/glide5-deprecated/README.md) | Retired | [Glide5.png](builds/glide5-deprecated/images/Glide5.png) |
+| [Hyper](builds/hyper/README.md) | Planning | Collecting spare parts. 3-inch 3S on a SoloGood Fi-135 |
 
 Mark4 images: [F405.webp](builds/mark4-7inch/images/F405.webp), [gps-1.webp](builds/mark4-7inch/images/gps-1.webp), [gps-2.webp](builds/mark4-7inch/images/gps-2.webp), [gps3.webp](builds/mark4-7inch/images/gps3.webp), [gps-4.webp](builds/mark4-7inch/images/gps-4.webp).
+
+## Remote ID
+
+I fly recreationally by default and only fly under Part 107 for project work.
+
+Recreational flights fall under the Exception for Limited Recreational Operations (49 USC 44809). On those flights I carry proof of TRUST, follow a community-based organization's safety guidelines, get airspace authorization (LAANC) before flying in controlled airspace, and stay at or below 400 ft AGL in uncontrolled airspace.
+
+If I'm flying recreationally and the aircraft weighs 250 g (0.55 lb) or less all-up, I don't register it and don't broadcast Remote ID. If a recreational aircraft weighs more than 250 g, I register it, mark the registration number on the outside, and broadcast Remote ID with built-in Standard Remote ID or a broadcast module. The only exception is flying at an FAA-Recognized Identification Area (FRIA), where I stay within the boundary and keep the aircraft in sight.
+
+Under Part 107, I register every aircraft and broadcast Remote ID no matter what it weighs.
+
+This is not legal advice. Check the current FAA rules.
+
+- [FAA Remote ID](https://www.faa.gov/uas/getting_started/remote_id)
+- [FAA recreational flyers](https://www.faa.gov/uas/recreational_flyers)
+- [FAA-Recognized Identification Areas](https://www.faa.gov/uas/getting_started/remote_id/fria)
 
 ## Configs
 
