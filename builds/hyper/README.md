@@ -40,6 +40,17 @@ The old 4.2.5 config had gyro alignment CW180. I will verify orientation in the 
 - Check motor direction
 - Save a `diff all` baseline
 
+## Photos
+
+I store photos in the `images/` folder next to this README and link them with relative paths; I keep each image under ~1 MB.
+
+<!-- ![Hyper top view](images/hyper-top.jpg) -->
+<!-- ![Hyper side view](images/hyper-side.jpg) -->
+<!-- ![Hyper FC/AIO wiring close-up](images/hyper-fc-wiring.jpg) -->
+<!-- ![Hyper VTX + antenna](images/hyper-vtx-antenna.jpg) -->
+<!-- ![Hyper receiver mounting](images/hyper-receiver.jpg) -->
+<!-- ![Hyper complete build with battery](images/hyper-complete.jpg) -->
+
 ## Build log
 
 - 2026-11-16: Build started. Parts list opened.
