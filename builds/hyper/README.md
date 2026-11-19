@@ -148,6 +148,23 @@ I store photos in the `images/` folder next to this README and link them with re
   <img src="images/hyper-left.jpg" alt="Hyper left side" width="45%">
 </p>
 
+## Parts list (copy/paste)
+
+Caption I can paste to Instagram or X:
+
+```text
+Hyper 3S toothpick
+Frame: Kabab FPV Toothpick 3 (TP3)
+FC/ESC: DarwinFPV F411 AIO 15A (Bluejay 0.21.0)
+Motors: Pyrodrone Hyperlite 1303.5 5022KV
+RX: ELRS EP2 nano
+VTX: PandaRC VT5804 AIR (analog)
+Firmware: Betaflight 2026.6.2
+Battery: 3S
+Props: 3-inch 2-blade, 3018/3020 class
+#fpv #fpvdrone #toothpick #betaflight #expresslrs
+```
+
 ## Build log
 
 - 2026-11-16: Build started. Parts list opened.
@@ -160,6 +177,42 @@ I store photos in the `images/` folder next to this README and link them with re
 
 - [Hyperlite 1303.5 5022KV (archived listing)](https://web.archive.org/web/20230201022401/https://pyrodrone.com/products/hyperlite-1303-5-fpv-drone-motor-5022kv)
 - [Kabab FPV Toothpick 3 (TP3) frame](https://fpvcycle.com/products/kabab-toothpick-3-tp3-frame)
+
+## PIDs & rates
+
+PIDs are Betaflight 2026.6.2 defaults (untuned). Rates are Actual, center 200, max 670 deg/s roll/pitch and 600 yaw, expo 54.
+
+Dump current values. Betaflight CLI `get` does a substring match, so these work:
+
+```
+profile 0
+get p_
+get i_
+get d_
+get f_
+get d_max
+rateprofile 0
+get rc_rate
+get srate
+get expo
+get rates_type
+```
+
+`diff profile` and `diff rates` show only changed values.
+
+Current PID/rates diff:
+
+```
+# PIDs: defaults (paste diff profile here after tuning)
+rateprofile 0
+set roll_rc_rate = 20
+set pitch_rc_rate = 20
+set yaw_rc_rate = 20
+set roll_expo = 54
+set pitch_expo = 54
+set yaw_expo = 54
+set yaw_srate = 60
+```
 
 ## Full CLI config
 
