@@ -10,9 +10,13 @@ Instagram: [@stoiczfpv](https://instagram.com/stoiczfpv)
 
 | Build | Status | Description | Links |
 | --- | --- | --- | --- |
+| [Hyper](builds/hyper/README.md) | Latest | 3S toothpick, Kabab TP3, Darwin F411 AIO, Bluejay, EP2 ELRS, VT5804 analog | [Build page](builds/hyper/README.md), [images](builds/hyper/images/) |
 | [Mark4 7-inch](builds/mark4-7inch/README.md) | In progress | 7-inch build on a REA Mark4 frame with 2807 1300KV motors, an F405 flight controller, a 60A 4-in-1 ESC, and GPS | [Build log](builds/mark4-7inch/build-log.md), [images](builds/mark4-7inch/images/) |
 | [Glide5](builds/glide5-deprecated/README.md) | Retired | My earlier build, kept for reference with its photo and Betaflight backup | [Photo](builds/glide5-deprecated/images/Glide5.png), [Betaflight backup](configs/betaflight/glide5/BTFL_backup_Glide5.json) |
-| [Hyper](builds/hyper/README.md) | Planning | 3-inch 3S freestyle build on a SoloGood Fi-135 with Hyperlite 1303.5 motors. I'm still collecting parts | [Build page](builds/hyper/README.md) |
+
+### Hyper photos
+
+<!-- ![Hyper](builds/hyper/images/hyper-top.jpg) -->
 
 Mark4 images: [F405.webp](builds/mark4-7inch/images/F405.webp), [gps-1.webp](builds/mark4-7inch/images/gps-1.webp), [gps-2.webp](builds/mark4-7inch/images/gps-2.webp), [gps3.webp](builds/mark4-7inch/images/gps3.webp), [gps-4.webp](builds/mark4-7inch/images/gps-4.webp).
 
