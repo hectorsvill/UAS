@@ -4,7 +4,7 @@ Build notes, Betaflight backups, and flight logs for unmanned aircraft.
 
 YouTube: [@stoiczfpv](https://youtube.com/@stoiczfpv)
 
-Instagram: [@stoiczfpv](https://instagram.com/stoiczfpv)
+I post on [Instagram @hectorsvill_uas](https://www.instagram.com/hectorsvill_uas/).
 
 ## Builds
 
@@ -16,7 +16,9 @@ Instagram: [@stoiczfpv](https://instagram.com/stoiczfpv)
 
 ### Hyper photos
 
-<!-- ![Hyper](builds/hyper/images/hyper-top.jpg) -->
+<p align="center">
+  <img src="builds/hyper/images/hyper-front.jpg" alt="Hyper front" width="300">
+</p>
 
 Mark4 images: [F405.webp](builds/mark4-7inch/images/F405.webp), [gps-1.webp](builds/mark4-7inch/images/gps-1.webp), [gps-2.webp](builds/mark4-7inch/images/gps-2.webp), [gps3.webp](builds/mark4-7inch/images/gps3.webp), [gps-4.webp](builds/mark4-7inch/images/gps-4.webp).
 

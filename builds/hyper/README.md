@@ -1,5 +1,11 @@
 # Hyper
 
+<p align="center">
+  <img src="images/hyper-front.jpg" alt="Hyper front" width="45%">
+  <img src="images/hyper-right.jpg" alt="Hyper right side" width="45%">
+</p>
+
+
 3-inch 3S build on a Kabab FPV Toothpick 3 (TP3) frame, named for its Pyrodrone Hyperlite 1303.5 5022KV motors. Planning, collecting spare parts.
 
 | Spec | Detail |
@@ -137,12 +143,10 @@ Remaining setup is listed under Betaflight & ESC setup.
 
 I store photos in the `images/` folder next to this README and link them with relative paths; I keep each image under ~1 MB.
 
-<!-- ![Hyper top view](images/hyper-top.jpg) -->
-<!-- ![Hyper side view](images/hyper-side.jpg) -->
-<!-- ![Hyper FC/AIO wiring close-up](images/hyper-fc-wiring.jpg) -->
-<!-- ![Hyper VTX + antenna](images/hyper-vtx-antenna.jpg) -->
-<!-- ![Hyper receiver mounting](images/hyper-receiver.jpg) -->
-<!-- ![Hyper complete build with battery](images/hyper-complete.jpg) -->
+<p align="center">
+  <img src="images/hyper-back.jpg" alt="Hyper back" width="45%">
+  <img src="images/hyper-left.jpg" alt="Hyper left side" width="45%">
+</p>
 
 ## Build log
 
