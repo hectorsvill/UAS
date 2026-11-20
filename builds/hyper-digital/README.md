@@ -10,7 +10,7 @@ Digital version of [Hyper Analog](../hyper/README.md). Uses the same FC, motors,
 
 | Spec | Detail |
 | --- | --- |
-| Status | On the bench. Flashed 2026-11-20. Motor order/direction, ESC direction, receiver, modes, rates, OSD, and maiden still to do |
+| Status | On the bench. Setup 2026-11-20. Goggles OSD verify, current calibration, failsafe, maiden, PID tune, and a full CLI dump still to do |
 | Frame | SoloGood 3-inch carbon frame for DJI O4 ([Amazon listing](https://www.amazon.com/dp/B0F1F5YSMS): 3 Inch Micro Carbon Fiber FPV Racing Quadcopter Frame For DJI O4 Air Unit). Wheelbase 135 mm, about 33 g, 14 mm camera bay, FC mounts 25.5×25.5 / 26.5×26.5 / 20×20 mm. 3K carbon; 3 mm bottom plate, 2 mm top plate, 1.5 mm side plates, 24 mm standoffs |
 | Motors | Pyrodrone Hyperlite 1303.5 5022KV ×4 (2–4S, discontinued). Same as [Hyper Analog](../hyper/README.md) |
 | FC/ESC | DarwinFPV F411 AIO, the same FC as [Hyper Analog](../hyper/README.md). STM32F411, 25.5×25.5 mm mount. ESC 15A continuous / 17A burst, EFM8BB21, Bluejay 0.21.0 on layout S-H-50 (was BLHeli_S 16.7). 1–3S only. 5V/2A BEC. See [Hyper Analog](../hyper/README.md) for the ESC setup |
@@ -50,15 +50,52 @@ Recorded 2026-11-20.
 - Backup: I skipped a fresh `diff`. The baseline is [Hyper Analog](../hyper/README.md)'s full CLI config. The FC is now mounted in normal orientation (not upside down), so board roll is 0 and Hyper Analog's motor remap does not carry over.
 - Flash: Betaflight 2026.6.2, target MATEKF411 (community target), full chip erase. Build options include HD OSD (MSP DisplayPort) for the O4 Lite, CRSF, and DShot/telemetry. SmartAudio/Tramp not needed.
 - Setup: I applied custom defaults, calibrated the accelerometer, and left board alignment at 0. UART1 is Serial RX (ELRS EP2, CRSF). UART2 is Peripherals "VTX (MSP + Displayport)" for the O4 Lite; no Configuration/MSP toggle needed. Motor resources are stock: MOTOR 1 B04, 2 B05, 3 B06, 4 B07. UART1 is A09/A10, UART2 is A02/A03.
+- Motors: I checked and fixed motor order and direction (props-in).
+- Receiver/modes: CRSF, AETR1234, sticks verified. Arm on AUX1, Flip over after crash on AUX2. `set small_angle = 180` so it can arm upside down for turtle.
+- CPU/rates: `status` shows CPU 24%, gyro 8 kHz, OSD: MSP (53 x 20).
+
+```
+set pid_process_denom = 4
+set gyro_lpf2_static_hz = 0
+set dyn_notch_count = 1
+set dshot_bidir = ON
+set motor_poles = 12
+rateprofile 0
+set rates_type = ACTUAL
+set roll_rc_rate = 20
+set pitch_rc_rate = 20
+set roll_srate = 67
+set pitch_srate = 67
+set yaw_srate = 60
+set roll_expo = 54
+set pitch_expo = 54
+save
+```
+
+- OSD: HD, O4 Lite Canvas mode in the goggles.
+  - On: battery voltage, average cell voltage, link quality, RSSI dBm, flight timer, warnings, flight mode, mAh drawn (once the current sensor is calibrated).
+  - Off: crosshair, craft name, artificial horizon, home arrow/GPS items, throttle/PID/rate readouts.
+  - Alarms: RSSI dBm -100, LQ 70%. `set vbat_warning_cell_voltage = 340`. Land around 10.5 V at rest on 3S.
+
+### Current sensor (mAh) calibration
+
+On the Power & Battery tab, set the current meter source to Onboard ADC. Fly a full pack and note the OSD mAh. Recharge and note the charger mAh. New scale = current scale × (OSD mAh / charger mAh). Then:
+
+```
+set ibata_scale = <new value>
+save
+```
+
+Repeat until it's within about 5%.
 
 ### Next
 
-- Motor order and direction check
-- ESC direction in Bluejay
-- Receiver
-- Modes
-- Rates
-- OSD
+- Verify OSD in the goggles
+- Current sensor (mAh) calibration
+- Failsafe
+- Maiden
+- PID tune
+- Full CLI config
 
 ## Betaflight & ESC setup
 
@@ -87,10 +124,10 @@ Recorded 2026-11-20.
 
 ### Modes
 
-Same as Hyper Analog until I change them:
-
+- CRSF, AETR1234, sticks verified
 - Arm on AUX1 (1700–2100)
 - Flip over after crash (turtle) on AUX2 (1700–2100)
+- `small_angle` 180 so it can arm upside down for turtle
 
 ### VTX
 
@@ -114,23 +151,23 @@ Delete the VTX table on the Video Transmitter tab, and set the goggles OSD to Ca
 
 ### CPU load
 
-TBD after the swap. Digital OSD should be a bit lighter than the analog chip. If the OSD shows CPU overload, check `status` once it's past boot.
+`status` shows CPU 24%, gyro 8 kHz, OSD: MSP (53 x 20). Current filter settings: `pid_process_denom = 4`, `gyro_lpf2_static_hz = 0`, `dyn_notch_count = 1`.
 
 ### Rates
 
-I'll start from Hyper Analog's Actual rates (center 200, max 670 deg/s roll/pitch, yaw srate 60, expo 54) and tighten them if I want it snappier. See PIDs & rates below.
+Actual, rateprofile 0: roll/pitch `rc_rate` 20, `srate` 67, yaw `srate` 60, roll/pitch expo 54. PIDs are still defaults. See PIDs & rates below.
 
 ### ESC
 
-Same Bluejay setup as [Hyper Analog](../hyper/README.md): Bluejay 0.21.0 at 48 kHz, layout S-H-50, M1 Reversed, M2 Normal, M3 Reversed, M4 Normal, `motor_poles = 12`. Recheck directions after I mount the motors.
+Same Bluejay setup as [Hyper Analog](../hyper/README.md): Bluejay 0.21.0 at 48 kHz, layout S-H-50. I checked and fixed motor order and direction (props-in). `motor_poles = 12`.
 
 ### Bidirectional DShot
 
-Same as Hyper Analog (DSHOT300, bidirectional DShot on). I'll confirm with `dshot_telemetry_info` after the swap.
+`dshot_bidir = ON`, `motor_poles = 12`.
 
 ### Still to do
 
-See Next under Betaflight setup: motor order and direction, ESC direction in Bluejay, receiver, modes, rates, and OSD. Then maiden and a full CLI dump.
+See Next under Betaflight setup.
 
 ## Next steps
 
@@ -169,7 +206,7 @@ Props: 3-inch 2-blade, 3018/3020 class
 ## Build log
 
 - 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Uses the same FC, motors, and EP2 receiver as Hyper Analog.
-- 2026-11-20: I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. Motor order/direction, ESC direction, receiver, modes, rates, and OSD are next.
+- 2026-11-20: I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, and applied CPU/rates and HD OSD. Next: verify OSD in the goggles, current calibration, failsafe, maiden, PID tune, and a full CLI dump.
 
 ## Links
 
@@ -180,7 +217,7 @@ Props: 3-inch 2-blade, 3018/3020 class
 
 ## PIDs & rates
 
-PIDs are Betaflight 2026.6.2 defaults (untuned) unless noted. I'll start from Hyper Analog's rates and tune after the maiden.
+PIDs are Betaflight 2026.6.2 defaults (untuned). Rates are Actual, rateprofile 0: roll/pitch `rc_rate` 20, `srate` 67, yaw `srate` 60, roll/pitch expo 54.
 
 Dump current values. Betaflight CLI `get` does a substring match, so these work:
 
@@ -204,17 +241,45 @@ Current PID/rates diff:
 
 ```
 # PIDs: defaults (paste diff profile here after tuning)
-# paste diff rates here
+rateprofile 0
+set rates_type = ACTUAL
+set roll_rc_rate = 20
+set pitch_rc_rate = 20
+set roll_srate = 67
+set pitch_srate = 67
+set yaw_srate = 60
+set roll_expo = 54
+set pitch_expo = 54
 ```
 
 ## Full CLI config
 
-Reproduce this config from a fresh Betaflight 2026.6.2 MATEKF411 flash (after defaults) once the build is flying. `defaults` is not needed after a full chip erase. `acc_calibration` is board-specific, so recalibrate the accelerometer instead of pasting it. ESC direction is set in ESC Configurator, not CLI. Board alignment is 0 and motor resources are stock; do not paste Hyper Analog's remap.
+Reproduce this config from a fresh Betaflight 2026.6.2 MATEKF411 flash (after defaults). `defaults` is not needed after a full chip erase. `acc_calibration` is board-specific, so recalibrate the accelerometer instead of pasting it. ESC direction is set in ESC Configurator, not CLI. Board alignment is 0 and motor resources are stock; do not paste Hyper Analog's remap. `small_angle` 180 is intentional; turtle mode (flip over after crash, AUX2) also arms upside down by itself. OSD element positions and `ibata_scale` still need a dump after I finish setup.
 
 ```
 # UART2 is set in the Ports tab: Peripherals "VTX (MSP + Displayport)"
-# paste remaining CLI commands here as I finish setup
+feature TELEMETRY
+feature OSD
+serial UART1 64 115200 57600 0 115200
+aux 0 0 0 1700 2100 0 0
+aux 1 35 1 1700 2100 0 0
+set gyro_lpf2_static_hz = 0
+set dyn_notch_count = 1
+set dshot_bidir = ON
+set motor_poles = 12
+set small_angle = 180
+set pid_process_denom = 4
 set osd_displayport_device = MSP
 set vcd_video_system = HD
+set vbat_warning_cell_voltage = 340
+rateprofile 0
+set rates_type = ACTUAL
+set roll_rc_rate = 20
+set pitch_rc_rate = 20
+set roll_srate = 67
+set pitch_srate = 67
+set yaw_srate = 60
+set roll_expo = 54
+set pitch_expo = 54
 save
 ```
