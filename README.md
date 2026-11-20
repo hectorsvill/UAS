@@ -51,6 +51,12 @@ Betaflight backups are in [configs/betaflight/](configs/betaflight/). Each direc
 - [flight-controllers/furyf4osd](configs/betaflight/flight-controllers/furyf4osd/)
   - [BTFL_cli_backup_20250621_163759_FURYF4OSD.txt](configs/betaflight/flight-controllers/furyf4osd/BTFL_cli_backup_20250621_163759_FURYF4OSD.txt)
 
+## Scripts
+
+Scripts are in [scripts/](scripts/README.md).
+
+- [drone-video-renamer](scripts/drone-video-renamer/README.md) renames SD card videos to `DroneName-YYYY-MM-DD-<time or UUID>.ext`.
+
 ## Logs
 
 - [2025](logs/2025.md)
