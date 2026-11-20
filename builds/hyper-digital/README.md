@@ -1,8 +1,9 @@
 # Hyper Digital
 
-<!-- Top photos: images/hyper-digital-front.jpg and images/hyper-digital-right.jpg, side by side at width 45%, once I have them. -->
-
-Photos TBD.
+<p align="center">
+  <img src="images/hyper-digital-front.jpg" alt="Hyper Digital front" width="45%">
+  <img src="images/hyper-digital-right.jpg" alt="Hyper Digital right side" width="45%">
+</p>
 
 Status: On the bench
 
@@ -10,18 +11,18 @@ Digital version of [Hyper Analog](../hyper/README.md). Uses the same FC, motors,
 
 | Spec | Detail |
 | --- | --- |
-| Status | On the bench. Setup 2026-11-20. Goggles OSD verify, current calibration, failsafe test, maiden, PID tune, and a full CLI dump still to do |
+| Status | On the bench. Betaflight setup complete 2026-11-20. Bench check (OSD in the goggles, arm, failsafe test), maiden, current calibration, and PID/rates tune still to do |
 | Frame | SoloGood 3-inch carbon frame for DJI O4 ([Amazon listing](https://www.amazon.com/dp/B0F1F5YSMS): 3 Inch Micro Carbon Fiber FPV Racing Quadcopter Frame For DJI O4 Air Unit). Wheelbase 135 mm, about 33 g, 14 mm camera bay, FC mounts 25.5×25.5 / 26.5×26.5 / 20×20 mm. 3K carbon; 3 mm bottom plate, 2 mm top plate, 1.5 mm side plates, 24 mm standoffs |
 | Motors | Pyrodrone Hyperlite 1303.5 5022KV ×4 (2–4S, discontinued). Same as [Hyper Analog](../hyper/README.md) |
 | FC/ESC | DarwinFPV F411 AIO, the same FC as [Hyper Analog](../hyper/README.md). STM32F411, 25.5×25.5 mm mount. ESC 15A continuous / 17A burst, EFM8BB21, Bluejay 0.21.0 on layout S-H-50 (was BLHeli_S 16.7). 1–3S only. 5V/2A BEC. See [Hyper Analog](../hyper/README.md) for the ESC setup |
-| VTX | DJI O4 Lite (O4 Air Unit). MSP DisplayPort on UART2. Power from VBAT |
+| VTX | DJI O4 Lite (O4 Air Unit), stock camera. MSP DisplayPort on UART2. Power from VBAT |
 | RX | ExpressLRS 2.4 GHz EP2 RX nano (SX1280) on UART1 via CRSF. Same as [Hyper Analog](../hyper/README.md) |
 | Battery | 3S, capacity TBD. Do not run the O4 Lite on 4S |
 | Props | 3-inch 2-blade, 3018/3020 class. 5022KV is high for aggressive triblades on 3S |
 | AUW | TBD. I will weigh it before the first flight. On a recreational flight, 250 g (0.55 lb) or less means I don't register or broadcast Remote ID. More than 250 g means I register, mark, and broadcast, or fly at a FRIA. |
 | Operating mode | Recreational by default. I only fly this aircraft under Part 107 for a project. |
 | Remote ID | I have not chosen the hardware yet. If I fly it recreationally at 250 g (0.55 lb) or less, I don't register it and don't broadcast Remote ID. If it weighs more than 250 g, I register it, mark the registration number on the outside, and broadcast with built-in Standard Remote ID or a module, unless I fly at a FRIA, stay inside the boundary, and keep it in sight. Under Part 107 I register and broadcast at any weight. |
-| Betaflight config | See Betaflight & ESC setup and Full CLI config below. Link `configs/betaflight/hyper-digital/` here once a dump exists |
+| Betaflight config | See Betaflight & ESC setup and Full CLI config below (2026-11-20 `diff all`). Link `configs/betaflight/hyper-digital/` here if I add a file copy |
 | Brain note | The full parts list with prices lives in my private notes |
 
 ## Firmware
@@ -98,12 +99,10 @@ Repeat until it's within about 5%.
 
 ### Next
 
-- Verify OSD in the goggles
-- Current sensor (mAh) calibration
-- Run failsafe test
+- Bench check: OSD in the goggles, arm, failsafe test
 - Maiden
-- PID tune
-- Full CLI config
+- Current sensor (mAh) calibration
+- PID/rates tune
 
 ## Betaflight & ESC setup
 
@@ -136,6 +135,7 @@ Recorded 2026-11-20.
 - Arm on AUX1 (1700–2100)
 - Flip over after crash (turtle) on AUX2 (1700–2100)
 - `small_angle` 180 so it can arm upside down for turtle
+- Additional modes from the 2026-11-20 `diff all` are in Full CLI config (`aux 1` mode 13 on AUX5, `aux 2` mode 19 on AUX3)
 
 ### VTX
 
@@ -147,15 +147,7 @@ Recorded 2026-11-20.
 
 ### Betaflight changes vs Hyper Analog
 
-UART2 is set in the Ports tab: Peripherals "VTX (MSP + Displayport)". Then:
-
-```
-set osd_displayport_device = MSP
-set vcd_video_system = HD
-save
-```
-
-Delete the VTX table on the Video Transmitter tab, and set the goggles OSD to Canvas mode.
+UART2 is set in the Ports tab as Peripherals "VTX (MSP + Displayport)" (`serial UART2 131073` in the 2026-11-20 `diff all`). Delete the analog VTX table, and set the goggles OSD to Canvas mode. The full command list is in Full CLI config below.
 
 ### CPU load
 
@@ -175,24 +167,23 @@ Same Bluejay setup as [Hyper Analog](../hyper/README.md): Bluejay 0.21.0 at 48 k
 
 ### Still to do
 
-See Next under Betaflight setup.
+See Next steps below.
 
 ## Next steps
 
-Remaining setup is listed under Betaflight setup.
+- Bench check: OSD in the goggles, arm, failsafe test
+- Maiden
+- Current sensor (mAh) calibration
+- PID/rates tune
 
 ## Photos
 
 I store photos in the `images/` folder next to this README and link them with relative paths; I keep each image under ~1 MB.
 
-Photos TBD. I'll add back and left shots here, side by side at width 45%, once I take them.
-
-<!--
 <p align="center">
   <img src="images/hyper-digital-back.jpg" alt="Hyper Digital back" width="45%">
   <img src="images/hyper-digital-left.jpg" alt="Hyper Digital left side" width="45%">
 </p>
--->
 
 ## Parts list (copy/paste)
 
@@ -204,7 +195,7 @@ Frame: SoloGood 3-inch carbon (DJI O4)
 FC/ESC: DarwinFPV F411 AIO 15A (Bluejay 0.21.0)
 Motors: Pyrodrone Hyperlite 1303.5 5022KV
 RX: ELRS EP2 nano
-VTX: DJI O4 Lite
+VTX: DJI O4 Lite (stock camera)
 Firmware: Betaflight 2026.6.2
 Battery: 3S
 Props: 3-inch 2-blade, 3018/3020 class
@@ -214,18 +205,19 @@ Props: 3-inch 2-blade, 3018/3020 class
 ## Build log
 
 - 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Uses the same FC, motors, and EP2 receiver as Hyper Analog.
-- 2026-11-20: I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, and applied CPU/rates and HD OSD. Next: verify OSD in the goggles, current calibration, run the failsafe test, maiden, PID tune, and a full CLI dump.
+- 2026-11-20: Betaflight setup complete. I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, applied CPU/rates, HD OSD, and failsafe settings, and saved a `diff all`. Next: bench check (OSD in the goggles, arm, failsafe test), maiden, current calibration, and PID/rates tune.
 
 ## Links
 
 - [SoloGood 3-inch carbon frame for DJI O4](https://www.amazon.com/dp/B0F1F5YSMS)
 - [DJI O4 Air Unit Series user manual](https://dl.djicdn.com/downloads/DJI_O4_Air_Unit_Series/UM/DJI_O4_Air_Unit_Series_User_Manual_v1.0_en.pdf)
+- [DJI Goggles 3 pairing and streaming](../../gear/dji-goggles-3/README.md) (PR #8)
 - [Hyper Analog](../hyper/README.md)
 - [Hyperlite 1303.5 5022KV (archived listing)](https://web.archive.org/web/20230201022401/https://pyrodrone.com/products/hyperlite-1303-5-fpv-drone-motor-5022kv)
 
 ## PIDs & rates
 
-PIDs are Betaflight 2026.6.2 defaults (untuned). Rates are Actual, rateprofile 0: roll/pitch `rc_rate` 20, `srate` 67, yaw `srate` 60, roll/pitch expo 54.
+PIDs are Betaflight 2026.6.2 defaults (untuned). Rates from the 2026-11-20 `diff all`, rateprofile 0: roll/pitch `rc_rate` 20, expo 54, yaw `srate` 60. Roll/pitch `srate` 67 and `rates_type` ACTUAL were set and are defaults, so they do not appear in the diff.
 
 Dump current values. Betaflight CLI `get` does a substring match, so these work:
 
@@ -250,45 +242,50 @@ Current PID/rates diff:
 ```
 # PIDs: defaults (paste diff profile here after tuning)
 rateprofile 0
-set rates_type = ACTUAL
 set roll_rc_rate = 20
 set pitch_rc_rate = 20
-set roll_srate = 67
-set pitch_srate = 67
-set yaw_srate = 60
 set roll_expo = 54
 set pitch_expo = 54
+set yaw_srate = 60
 ```
 
 ## Full CLI config
 
-Reproduce this config from a fresh Betaflight 2026.6.2 MATEKF411 flash (after defaults). `defaults` is not needed after a full chip erase. `acc_calibration` is board-specific, so recalibrate the accelerometer instead of pasting it. ESC direction is set in ESC Configurator, not CLI. Board alignment is 0 and motor resources are stock; do not paste Hyper Analog's remap. `small_angle` 180 is intentional; turtle mode (flip over after crash, AUX2) also arms upside down by itself. OSD element positions and `ibata_scale` still need a dump after I finish setup.
+Reproduce this config from a fresh Betaflight 2026.6.2 MATEKF411 flash. `defaults` is not needed after a full chip erase. This is the 2026-11-20 `diff all` with `mcu_id`, the empty `signature` line, and `acc_calibration` removed. Calibrate the accelerometer after pasting. ESC direction is set in ESC Configurator, not CLI. Board alignment is 0 and motor resources are stock; do not paste Hyper Analog's remap. `small_angle` 180 is intentional; turtle mode (flip over after crash, AUX2) also arms upside down by itself. `ibata_scale` is still the default until I calibrate the current sensor.
 
 ```
-# UART2 is set in the Ports tab: Peripherals "VTX (MSP + Displayport)"
+# Betaflight 2026.6.2, MATEKF411
+batch start
+defaults nosave
+board_name MATEKF411
+manufacturer_id MTKS
 feature TELEMETRY
 feature OSD
 serial UART1 64 115200 57600 0 115200
+serial UART2 131073 115200 57600 0 115200
 aux 0 0 0 1700 2100 0 0
-aux 1 35 1 1700 2100 0 0
+aux 1 13 4 1700 2100 0 0
+aux 2 19 2 1700 2100 0 0
+aux 3 35 1 1700 2100 0 0
 set gyro_lpf2_static_hz = 0
 set dyn_notch_count = 1
 set dshot_bidir = ON
 set motor_poles = 12
 set small_angle = 180
 set pid_process_denom = 4
-set osd_displayport_device = MSP
-set vcd_video_system = HD
-set vbat_warning_cell_voltage = 340
-set failsafe_delay = 15
+set osd_link_quality_alarm = 70
+set osd_rssi_dbm_alarm = -100
+set osd_vbat_pos = 512
+set osd_link_quality_pos = 2532
+set osd_tim_2_pos = 2592
+set osd_mah_drawn_pos = 2625
+set osd_avg_cell_voltage_pos = 2560
+profile 0
 rateprofile 0
-set rates_type = ACTUAL
 set roll_rc_rate = 20
 set pitch_rc_rate = 20
-set roll_srate = 67
-set pitch_srate = 67
-set yaw_srate = 60
 set roll_expo = 54
 set pitch_expo = 54
+set yaw_srate = 60
 save
 ```
