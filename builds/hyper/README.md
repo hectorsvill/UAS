@@ -1,4 +1,4 @@
-# Hyper
+# Hyper Analog
 
 <p align="center">
   <img src="images/hyper-front.jpg" alt="Hyper front" width="45%">
