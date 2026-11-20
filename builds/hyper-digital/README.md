@@ -10,7 +10,7 @@ Digital version of [Hyper Analog](../hyper/README.md). Uses the same FC, motors,
 
 | Spec | Detail |
 | --- | --- |
-| Status | On the bench. Planned 2026-11-19. Mount, wire, and maiden still to do |
+| Status | On the bench. Flashed 2026-11-20. Motor order/direction, ESC direction, receiver, modes, rates, OSD, and maiden still to do |
 | Frame | SoloGood 3-inch carbon frame for DJI O4 ([Amazon listing](https://www.amazon.com/dp/B0F1F5YSMS): 3 Inch Micro Carbon Fiber FPV Racing Quadcopter Frame For DJI O4 Air Unit). Wheelbase 135 mm, about 33 g, 14 mm camera bay, FC mounts 25.5×25.5 / 26.5×26.5 / 20×20 mm. 3K carbon; 3 mm bottom plate, 2 mm top plate, 1.5 mm side plates, 24 mm standoffs |
 | Motors | Pyrodrone Hyperlite 1303.5 5022KV ×4 (2–4S, discontinued). Same as [Hyper Analog](../hyper/README.md) |
 | FC/ESC | DarwinFPV F411 AIO, the same FC as [Hyper Analog](../hyper/README.md). STM32F411, 25.5×25.5 mm mount. ESC 15A continuous / 17A burst, EFM8BB21, Bluejay 0.21.0 on layout S-H-50 (was BLHeli_S 16.7). 1–3S only. 5V/2A BEC. See [Hyper Analog](../hyper/README.md) for the ESC setup |
@@ -26,7 +26,7 @@ Digital version of [Hyper Analog](../hyper/README.md). Uses the same FC, motors,
 
 ## Firmware
 
-Same flash as [Hyper Analog](../hyper/README.md) until I confirm otherwise: Betaflight 2026.6.2, target MATEKF411 (community target) on the Darwin F411 AIO. The DARWINF411 target did not detect the gyro; use MATEKF411. Build options on Hyper Analog were CRSF, Analog OSD, DSHOT, VTX, and Pin IO. I may need a rebuild with digital OSD for MSP DisplayPort; TBD after I wire the O4.
+I flashed Betaflight 2026.6.2, target MATEKF411 (community target) on the Darwin F411 AIO, with full chip erase. Build options include HD OSD (MSP DisplayPort) for the O4 Lite, CRSF, and DShot/telemetry. SmartAudio/Tramp not needed. The DARWINF411 target did not detect the gyro; use MATEKF411.
 
 ## Wiring
 
@@ -43,27 +43,47 @@ The O4 Lite 3-in-1 cable has no solder pads at the air-unit end, so I cut the FC
 
 The O4 Lite input is 3.7–13.2 V, so a full 3S pack at 12.6 V on VBAT is within spec. Never run it on 4S. I'll add a low-ESR 220–470 µF, 25 V cap on the battery leads to soak up voltage spikes.
 
+## Betaflight setup
+
+Recorded 2026-11-20.
+
+- Backup: I skipped a fresh `diff`. The baseline is [Hyper Analog](../hyper/README.md)'s full CLI config. The FC is now mounted in normal orientation (not upside down), so board roll is 0 and Hyper Analog's motor remap does not carry over.
+- Flash: Betaflight 2026.6.2, target MATEKF411 (community target), full chip erase. Build options include HD OSD (MSP DisplayPort) for the O4 Lite, CRSF, and DShot/telemetry. SmartAudio/Tramp not needed.
+- Setup: I applied custom defaults, calibrated the accelerometer, and left board alignment at 0. UART1 is Serial RX (ELRS EP2, CRSF). UART2 is Peripherals "VTX (MSP + Displayport)" for the O4 Lite; no Configuration/MSP toggle needed. Motor resources are stock: MOTOR 1 B04, 2 B05, 3 B06, 4 B07. UART1 is A09/A10, UART2 is A02/A03.
+
+### Next
+
+- Motor order and direction check
+- ESC direction in Bluejay
+- Receiver
+- Modes
+- Rates
+- OSD
+
 ## Betaflight & ESC setup
 
-Planned 2026-11-19. Not wired yet.
+Recorded 2026-11-20.
 
 ### Firmware
 
 - Betaflight 2026.6.2, target MATEKF411 (community target) on the Darwin F411 AIO
-- Build options: same as Hyper Analog for now (CRSF, Analog OSD, DSHOT, VTX, Pin IO); digital OSD rebuild is TBD
-- Full chip erase before flash, if I reflash
+- Build options include HD OSD (MSP DisplayPort) for the O4 Lite, CRSF, and DShot/telemetry. SmartAudio/Tramp not needed
+- Full chip erase before flash
 
 ### Board alignment and motor remap
 
-If the FC mounting orientation differs from Hyper Analog, I have to recheck board alignment and the motor resource remap. Hyper Analog uses `align_board_roll = 180` and MOTOR 1 B06, 2 B07, 3 B04, 4 B05 (USB up, board flipped, props-in). I will confirm in the Setup tab after I mount it.
+- FC is mounted in normal orientation (not upside down)
+- Board alignment is 0. Hyper Analog's `align_board_roll = 180` and motor remap do not carry over
+- Motor resources are stock: MOTOR 1 B04, 2 B05, 3 B06, 4 B07
+- UART1 is A09/A10, UART2 is A02/A03
 
 ### Ports
 
 | Port | Setting |
 | --- | --- |
 | USB VCP | MSP on |
-| UART1 | Serial RX (EP2 ELRS, CRSF) at 115200 |
-| UART2 | MSP DisplayPort at 115200 (replaces TBS SmartAudio) |
+| UART1 | Serial RX (ELRS EP2, CRSF) |
+| UART2 | Peripherals "VTX (MSP + Displayport)" for the O4 Lite. No Configuration/MSP toggle needed |
 
 ### Modes
 
@@ -82,16 +102,15 @@ Same as Hyper Analog until I change them:
 
 ### Betaflight changes vs Hyper Analog
 
-After wiring, with props off:
+UART2 is set in the Ports tab: Peripherals "VTX (MSP + Displayport)". Then:
 
 ```
-serial UART2 1 115200 57600 0 115200
 set osd_displayport_device = MSP
 set vcd_video_system = HD
 save
 ```
 
-Then delete the VTX table on the Video Transmitter tab, and set the goggles OSD to Canvas mode.
+Delete the VTX table on the Video Transmitter tab, and set the goggles OSD to Canvas mode.
 
 ### CPU load
 
@@ -111,16 +130,11 @@ Same as Hyper Analog (DSHOT300, bidirectional DShot on). I'll confirm with `dsho
 
 ### Still to do
 
-- Mount and wire
-- Confirm board alignment and motor remap
-- Verify OSD in the goggles, props off
-- Maiden
-- Rates and PID tune
-- Full CLI config once it's flying
+See Next under Betaflight setup: motor order and direction, ESC direction in Bluejay, receiver, modes, rates, and OSD. Then maiden and a full CLI dump.
 
 ## Next steps
 
-Remaining setup is listed under Betaflight & ESC setup.
+Remaining setup is listed under Betaflight setup.
 
 ## Photos
 
@@ -154,7 +168,8 @@ Props: 3-inch 2-blade, 3018/3020 class
 
 ## Build log
 
-- 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Uses the same FC, motors, and EP2 receiver as Hyper Analog. Mount, wire, and maiden still to do.
+- 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Uses the same FC, motors, and EP2 receiver as Hyper Analog.
+- 2026-11-20: I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. Motor order/direction, ESC direction, receiver, modes, rates, and OSD are next.
 
 ## Links
 
@@ -194,11 +209,11 @@ Current PID/rates diff:
 
 ## Full CLI config
 
-Reproduce this config from a fresh Betaflight 2026.6.2 MATEKF411 flash (after defaults) once the build is flying. `defaults` is not needed after a full chip erase. `acc_calibration` is board-specific, so recalibrate the accelerometer instead of pasting it. ESC direction is set in ESC Configurator, not CLI. Board alignment and the motor remap depend on how I mount the FC, so I will not paste Hyper Analog's remap until I confirm orientation.
+Reproduce this config from a fresh Betaflight 2026.6.2 MATEKF411 flash (after defaults) once the build is flying. `defaults` is not needed after a full chip erase. `acc_calibration` is board-specific, so recalibrate the accelerometer instead of pasting it. ESC direction is set in ESC Configurator, not CLI. Board alignment is 0 and motor resources are stock; do not paste Hyper Analog's remap.
 
 ```
-# paste CLI commands here after the swap
-serial UART2 1 115200 57600 0 115200
+# UART2 is set in the Ports tab: Peripherals "VTX (MSP + Displayport)"
+# paste remaining CLI commands here as I finish setup
 set osd_displayport_device = MSP
 set vcd_video_system = HD
 save
