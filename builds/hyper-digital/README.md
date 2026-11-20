@@ -6,16 +6,16 @@ Photos TBD.
 
 Status: On the bench
 
-Digital version of Hyper. Same DarwinFPV F411 AIO, Pyrodrone Hyperlite 1303.5 motors, and ExpressLRS EP2 nano, moved onto a SoloGood 3-inch frame with a DJI O4 Lite (O4 Air Unit) for digital video, because analog video quality was poor.
+Digital version of [Hyper Analog](../hyper/README.md). Uses the same FC, motors, and ExpressLRS EP2 nano as Hyper Analog, on a SoloGood 3-inch frame with a DJI O4 Lite (O4 Air Unit) for digital video, because analog video quality was poor.
 
 | Spec | Detail |
 | --- | --- |
 | Status | On the bench. Planned 2026-11-19. Mount, wire, and maiden still to do |
 | Frame | SoloGood 3-inch carbon frame for DJI O4 ([Amazon listing](https://www.amazon.com/dp/B0F1F5YSMS): 3 Inch Micro Carbon Fiber FPV Racing Quadcopter Frame For DJI O4 Air Unit). Wheelbase 135 mm, about 33 g, 14 mm camera bay, FC mounts 25.5×25.5 / 26.5×26.5 / 20×20 mm. 3K carbon; 3 mm bottom plate, 2 mm top plate, 1.5 mm side plates, 24 mm standoffs |
-| Motors | Pyrodrone Hyperlite 1303.5 5022KV ×4 (2–4S, discontinued). Same as [Hyper](../hyper/README.md) |
-| FC/ESC | DarwinFPV F411 AIO, same board as Hyper. STM32F411, 25.5×25.5 mm mount. ESC 15A continuous / 17A burst, EFM8BB21, Bluejay 0.21.0 on layout S-H-50 (was BLHeli_S 16.7). 1–3S only. 5V/2A BEC. See [Hyper](../hyper/README.md) for the ESC setup |
+| Motors | Pyrodrone Hyperlite 1303.5 5022KV ×4 (2–4S, discontinued). Same as [Hyper Analog](../hyper/README.md) |
+| FC/ESC | DarwinFPV F411 AIO, the same FC as [Hyper Analog](../hyper/README.md). STM32F411, 25.5×25.5 mm mount. ESC 15A continuous / 17A burst, EFM8BB21, Bluejay 0.21.0 on layout S-H-50 (was BLHeli_S 16.7). 1–3S only. 5V/2A BEC. See [Hyper Analog](../hyper/README.md) for the ESC setup |
 | VTX | DJI O4 Lite (O4 Air Unit). MSP DisplayPort on UART2. Power from VBAT |
-| RX | ExpressLRS 2.4 GHz EP2 RX nano (SX1280) on UART1 via CRSF. Same as Hyper |
+| RX | ExpressLRS 2.4 GHz EP2 RX nano (SX1280) on UART1 via CRSF. Same as [Hyper Analog](../hyper/README.md) |
 | Battery | 3S, capacity TBD. Do not run the O4 Lite on 4S |
 | Props | 3-inch 2-blade, 3018/3020 class. 5022KV is high for aggressive triblades on 3S |
 | AUW | TBD. I will weigh it before the first flight. On a recreational flight, 250 g (0.55 lb) or less means I don't register or broadcast Remote ID. More than 250 g means I register, mark, and broadcast, or fly at a FRIA. |
@@ -26,11 +26,11 @@ Digital version of Hyper. Same DarwinFPV F411 AIO, Pyrodrone Hyperlite 1303.5 mo
 
 ## Firmware
 
-Same flash as Hyper until I confirm otherwise: Betaflight 2026.6.2, target MATEKF411 (community target) on the Darwin F411 AIO. The DARWINF411 target did not detect the gyro; use MATEKF411. Build options on Hyper were CRSF, Analog OSD, DSHOT, VTX, and Pin IO. I may need a rebuild with digital OSD for MSP DisplayPort; TBD after I wire the O4.
+Same flash as [Hyper Analog](../hyper/README.md) until I confirm otherwise: Betaflight 2026.6.2, target MATEKF411 (community target) on the Darwin F411 AIO. The DARWINF411 target did not detect the gyro; use MATEKF411. Build options on Hyper Analog were CRSF, Analog OSD, DSHOT, VTX, and Pin IO. I may need a rebuild with digital OSD for MSP DisplayPort; TBD after I wire the O4.
 
 ## Wiring
 
-The O4 Lite 3-in-1 cable has no solder pads at the air-unit end, so I cut the FC end and solder it to the pads the VT5804 used on Hyper. Pinout is from the [DJI O4 Air Unit Series user manual](https://dl.djicdn.com/downloads/DJI_O4_Air_Unit_Series/UM/DJI_O4_Air_Unit_Series_User_Manual_v1.0_en.pdf). TX goes to RX, so the O4's white wire lands on TX2. I'll check the pad labels on the board before I solder.
+The O4 Lite 3-in-1 cable has no solder pads at the air-unit end, so I cut the FC end and solder it to the pads the VT5804 used on [Hyper Analog](../hyper/README.md). Pinout is from the [DJI O4 Air Unit Series user manual](https://dl.djicdn.com/downloads/DJI_O4_Air_Unit_Series/UM/DJI_O4_Air_Unit_Series_User_Manual_v1.0_en.pdf). TX goes to RX, so the O4's white wire lands on TX2. I'll check the pad labels on the board before I solder.
 
 | O4 wire | Signal | Darwin F411 pad |
 | --- | --- | --- |
@@ -50,12 +50,12 @@ Planned 2026-11-19. Not wired yet.
 ### Firmware
 
 - Betaflight 2026.6.2, target MATEKF411 (community target) on the Darwin F411 AIO
-- Build options: same as Hyper for now (CRSF, Analog OSD, DSHOT, VTX, Pin IO); digital OSD rebuild is TBD
+- Build options: same as Hyper Analog for now (CRSF, Analog OSD, DSHOT, VTX, Pin IO); digital OSD rebuild is TBD
 - Full chip erase before flash, if I reflash
 
 ### Board alignment and motor remap
 
-If the FC mounting orientation differs from Hyper, I have to recheck board alignment and the motor resource remap. Hyper uses `align_board_roll = 180` and MOTOR 1 B06, 2 B07, 3 B04, 4 B05 (USB up, board flipped, props-in). I will confirm in the Setup tab after I mount it.
+If the FC mounting orientation differs from Hyper Analog, I have to recheck board alignment and the motor resource remap. Hyper Analog uses `align_board_roll = 180` and MOTOR 1 B06, 2 B07, 3 B04, 4 B05 (USB up, board flipped, props-in). I will confirm in the Setup tab after I mount it.
 
 ### Ports
 
@@ -67,7 +67,7 @@ If the FC mounting orientation differs from Hyper, I have to recheck board align
 
 ### Modes
 
-Same as Hyper until I change them:
+Same as Hyper Analog until I change them:
 
 - Arm on AUX1 (1700–2100)
 - Flip over after crash (turtle) on AUX2 (1700–2100)
@@ -80,7 +80,7 @@ Same as Hyper until I change them:
 - Remove the analog VTX table
 - In the goggles, set the O4 OSD to Canvas mode (HD)
 
-### Betaflight changes vs Hyper
+### Betaflight changes vs Hyper Analog
 
 After wiring, with props off:
 
@@ -99,15 +99,15 @@ TBD after the swap. Digital OSD should be a bit lighter than the analog chip. If
 
 ### Rates
 
-I'll start from Hyper's Actual rates (center 200, max 670 deg/s roll/pitch, yaw srate 60, expo 54) and tighten them if I want it snappier. See PIDs & rates below.
+I'll start from Hyper Analog's Actual rates (center 200, max 670 deg/s roll/pitch, yaw srate 60, expo 54) and tighten them if I want it snappier. See PIDs & rates below.
 
 ### ESC
 
-Same Bluejay setup as [Hyper](../hyper/README.md): Bluejay 0.21.0 at 48 kHz, layout S-H-50, M1 Reversed, M2 Normal, M3 Reversed, M4 Normal, `motor_poles = 12`. Recheck directions after I mount the motors.
+Same Bluejay setup as [Hyper Analog](../hyper/README.md): Bluejay 0.21.0 at 48 kHz, layout S-H-50, M1 Reversed, M2 Normal, M3 Reversed, M4 Normal, `motor_poles = 12`. Recheck directions after I mount the motors.
 
 ### Bidirectional DShot
 
-Same as Hyper (DSHOT300, bidirectional DShot on). I'll confirm with `dshot_telemetry_info` after the swap.
+Same as Hyper Analog (DSHOT300, bidirectional DShot on). I'll confirm with `dshot_telemetry_info` after the swap.
 
 ### Still to do
 
@@ -154,18 +154,18 @@ Props: 3-inch 2-blade, 3018/3020 class
 
 ## Build log
 
-- 2026-11-19: Planned. Digital version of Hyper on the SoloGood 3-inch frame with a DJI O4 Lite. Same FC, motors, and EP2 receiver as Hyper. Mount, wire, and maiden still to do.
+- 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Uses the same FC, motors, and EP2 receiver as Hyper Analog. Mount, wire, and maiden still to do.
 
 ## Links
 
 - [SoloGood 3-inch carbon frame for DJI O4](https://www.amazon.com/dp/B0F1F5YSMS)
 - [DJI O4 Air Unit Series user manual](https://dl.djicdn.com/downloads/DJI_O4_Air_Unit_Series/UM/DJI_O4_Air_Unit_Series_User_Manual_v1.0_en.pdf)
-- [Hyper](../hyper/README.md)
+- [Hyper Analog](../hyper/README.md)
 - [Hyperlite 1303.5 5022KV (archived listing)](https://web.archive.org/web/20230201022401/https://pyrodrone.com/products/hyperlite-1303-5-fpv-drone-motor-5022kv)
 
 ## PIDs & rates
 
-PIDs are Betaflight 2026.6.2 defaults (untuned) unless noted. I'll start from Hyper's rates and tune after the maiden.
+PIDs are Betaflight 2026.6.2 defaults (untuned) unless noted. I'll start from Hyper Analog's rates and tune after the maiden.
 
 Dump current values. Betaflight CLI `get` does a substring match, so these work:
 
@@ -194,7 +194,7 @@ Current PID/rates diff:
 
 ## Full CLI config
 
-Reproduce this config from a fresh Betaflight 2026.6.2 MATEKF411 flash (after defaults) once the build is flying. `defaults` is not needed after a full chip erase. `acc_calibration` is board-specific, so recalibrate the accelerometer instead of pasting it. ESC direction is set in ESC Configurator, not CLI. Board alignment and the motor remap depend on how I mount the FC, so I will not paste Hyper's remap until I confirm orientation.
+Reproduce this config from a fresh Betaflight 2026.6.2 MATEKF411 flash (after defaults) once the build is flying. `defaults` is not needed after a full chip erase. `acc_calibration` is board-specific, so recalibrate the accelerometer instead of pasting it. ESC direction is set in ESC Configurator, not CLI. Board alignment and the motor remap depend on how I mount the FC, so I will not paste Hyper Analog's remap until I confirm orientation.
 
 ```
 # paste CLI commands here after the swap
