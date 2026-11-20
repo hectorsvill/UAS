@@ -10,7 +10,7 @@ Digital version of [Hyper Analog](../hyper/README.md). Uses the same FC, motors,
 
 | Spec | Detail |
 | --- | --- |
-| Status | On the bench. Setup 2026-11-20. Goggles OSD verify, current calibration, failsafe, maiden, PID tune, and a full CLI dump still to do |
+| Status | On the bench. Setup 2026-11-20. Goggles OSD verify, current calibration, failsafe test, maiden, PID tune, and a full CLI dump still to do |
 | Frame | SoloGood 3-inch carbon frame for DJI O4 ([Amazon listing](https://www.amazon.com/dp/B0F1F5YSMS): 3 Inch Micro Carbon Fiber FPV Racing Quadcopter Frame For DJI O4 Air Unit). Wheelbase 135 mm, about 33 g, 14 mm camera bay, FC mounts 25.5×25.5 / 26.5×26.5 / 20×20 mm. 3K carbon; 3 mm bottom plate, 2 mm top plate, 1.5 mm side plates, 24 mm standoffs |
 | Motors | Pyrodrone Hyperlite 1303.5 5022KV ×4 (2–4S, discontinued). Same as [Hyper Analog](../hyper/README.md) |
 | FC/ESC | DarwinFPV F411 AIO, the same FC as [Hyper Analog](../hyper/README.md). STM32F411, 25.5×25.5 mm mount. ESC 15A continuous / 17A burst, EFM8BB21, Bluejay 0.21.0 on layout S-H-50 (was BLHeli_S 16.7). 1–3S only. 5V/2A BEC. See [Hyper Analog](../hyper/README.md) for the ESC setup |
@@ -76,6 +76,14 @@ save
   - On: battery voltage, average cell voltage, link quality, RSSI dBm, flight timer, warnings, flight mode, mAh drawn (once the current sensor is calibrated).
   - Off: crosshair, craft name, artificial horizon, home arrow/GPS items, throttle/PID/rate readouts.
   - Alarms: RSSI dBm -100, LQ 70%. `set vbat_warning_cell_voltage = 340`. Land around 10.5 V at rest on 3S.
+- Failsafe: Stage 2 = Drop (no GPS), guard time 1.0 s. I kept the defaults / these settings as set:
+
+```
+set failsafe_delay = 15
+save
+```
+
+  Test (props off), to run before maiden (not yet confirmed): arm, switch the radio off; motors should stop within about 1.5 s and the OSD should show FAILSAFE. Turn the radio back on and confirm it will not re-arm until I toggle the arm switch. Repeat this test before each maiden after config changes.
 
 ### Current sensor (mAh) calibration
 
@@ -92,7 +100,7 @@ Repeat until it's within about 5%.
 
 - Verify OSD in the goggles
 - Current sensor (mAh) calibration
-- Failsafe
+- Run failsafe test
 - Maiden
 - PID tune
 - Full CLI config
@@ -206,7 +214,7 @@ Props: 3-inch 2-blade, 3018/3020 class
 ## Build log
 
 - 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Uses the same FC, motors, and EP2 receiver as Hyper Analog.
-- 2026-11-20: I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, and applied CPU/rates and HD OSD. Next: verify OSD in the goggles, current calibration, failsafe, maiden, PID tune, and a full CLI dump.
+- 2026-11-20: I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, and applied CPU/rates and HD OSD. Next: verify OSD in the goggles, current calibration, run the failsafe test, maiden, PID tune, and a full CLI dump.
 
 ## Links
 
@@ -272,6 +280,7 @@ set pid_process_denom = 4
 set osd_displayport_device = MSP
 set vcd_video_system = HD
 set vbat_warning_cell_voltage = 340
+set failsafe_delay = 15
 rateprofile 0
 set rates_type = ACTUAL
 set roll_rc_rate = 20
