@@ -210,13 +210,14 @@ Print setup is in [TPU printing on the Flashforge Adventurer 5M](../../3d-printi
 
 | Part | File | Print | Status |
 | --- | --- | --- | --- |
-| O4 antenna mount (TPU) | [o4pro-antenna-mount.3mf](o4pro-antenna-mount.3mf) | Overture TPU, 0.16 mm layers, 3 walls, 25% gyroid, no support, 225/35 °C, printed on a Flashforge AD5M | Fit testing in progress (not final) |
+| O4 antenna mount (TPU) | [o4pro-antenna-mount.3mf](3DPrints/o4pro-antenna-mount.3mf) | Overture TPU, 0.16 mm layers, 3 walls, 25% gyroid, no support, 225/35 °C, printed on a Flashforge AD5M | Fit testing in progress (not final) |
+| O4 Lite camera damper pad v7b (TPU, print 2, collars up) | [o4lite-camera-damper-pad.3mf](3DPrints/o4lite-camera-damper-pad.3mf) | Overture TPU, 0.16 mm layers, 3 walls, 25% gyroid, no support, 225/35 °C, printed on a Flashforge AD5M | Fit testing in progress (not final) |
 
 ## Build log
 
 - 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Same FC and motors as Hyper Analog.
 - 2026-11-20: Betaflight setup complete. I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, applied CPU/rates, HD OSD, and failsafe settings, and saved a `diff all`. Next: bench check (OSD in the goggles, arm, failsafe test), maiden, current calibration, and PID/rates tune.
-- 2026-11-21: I switched the receiver to an HPXGRC 2.4 GHz ExpressLRS and added the O4 antenna mount print (`o4pro-antenna-mount.3mf`). Fit testing is in progress.
+- 2026-11-21: I switched the receiver to an HPXGRC 2.4 GHz ExpressLRS and added the O4 antenna mount print (`3DPrints/o4pro-antenna-mount.3mf`). Fit testing is in progress.
 
 ## Links
 

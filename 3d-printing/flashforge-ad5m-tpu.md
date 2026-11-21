@@ -82,5 +82,5 @@ These presets suit flexible drone parts. For rigid prints (PLA, PETG, carbon fib
 
 | Part | File | Notes |
 |---|---|---|
-| Antenna mount (O4 Pro, Fi-135 style) | [o4pro-antenna-mount.3mf](../builds/hyper-digital/o4pro-antenna-mount.3mf) | Rear screw tubes and rear ring removed; antenna tube and 4 mm standoff holes unchanged. Print flat, base down. |
-| Camera damper pad v2 (print 2) | `o4lite-camera-damper-pad-v2.stl` | Body 1.2 mm; 1.6 mm collars go into the plate holes. Camera 13.8 mm wide, plates 16.4 mm apart. Print collars up. |
+| Antenna mount (O4 Pro, Fi-135 style) | [o4pro-antenna-mount.3mf](../builds/hyper-digital/3DPrints/o4pro-antenna-mount.3mf) | Rear screw tubes and rear ring removed; antenna tube and 4 mm standoff holes unchanged. Print flat, base down. |
+| Camera damper pad v7b (print 2) | [o4lite-camera-damper-pad.3mf](../builds/hyper-digital/3DPrints/o4lite-camera-damper-pad.3mf) | Body 1.2 mm; 1.6 mm collars go into the plate holes. Camera 13.8 mm wide, plates 16.4 mm apart. Print collars up. |
