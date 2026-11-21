@@ -7,16 +7,16 @@
 
 Status: On the bench
 
-Digital version of [Hyper Analog](../hyper/README.md). Uses the same FC, motors, and ExpressLRS EP2 nano as Hyper Analog, on a SoloGood 3-inch frame with a DJI O4 Lite (O4 Air Unit) for digital video, because analog video quality was poor.
+Digital version of [Hyper Analog](../hyper/README.md). Same FC and motors as Hyper Analog, on a SoloGood 3-inch frame with a DJI O4 Lite (O4 Air Unit) for digital video, because analog video quality was poor. The receiver is an HPXGRC 2.4 GHz ExpressLRS, not the EP2 used on Hyper Analog.
 
 | Spec | Detail |
 | --- | --- |
-| Status | On the bench. Betaflight setup complete 2026-11-20. Bench check (OSD in the goggles, arm, failsafe test), maiden, current calibration, and PID/rates tune still to do |
+| Status | On the bench. Betaflight setup complete 2026-11-20. Fit testing in progress. Bench check (OSD in the goggles, arm, failsafe test), antenna-mount fit test, maiden, current calibration, and PID/rates tune still to do |
 | Frame | SoloGood 3-inch carbon frame for DJI O4 ([Amazon listing](https://www.amazon.com/dp/B0F1F5YSMS): 3 Inch Micro Carbon Fiber FPV Racing Quadcopter Frame For DJI O4 Air Unit). Wheelbase 135 mm, about 33 g, 14 mm camera bay, FC mounts 25.5×25.5 / 26.5×26.5 / 20×20 mm. 3K carbon; 3 mm bottom plate, 2 mm top plate, 1.5 mm side plates, 24 mm standoffs |
 | Motors | Pyrodrone Hyperlite 1303.5 5022KV ×4 (2–4S, discontinued). Same as [Hyper Analog](../hyper/README.md) |
 | FC/ESC | DarwinFPV F411 AIO, the same FC as [Hyper Analog](../hyper/README.md). STM32F411, 25.5×25.5 mm mount. ESC 15A continuous / 17A burst, EFM8BB21, Bluejay 0.21.0 on layout S-H-50 (was BLHeli_S 16.7). 1–3S only. 5V/2A BEC. See [Hyper Analog](../hyper/README.md) for the ESC setup |
 | VTX | DJI O4 Lite (O4 Air Unit), stock camera. MSP DisplayPort on UART2. Power from VBAT |
-| RX | ExpressLRS 2.4 GHz EP2 RX nano (SX1280) on UART1 via CRSF. Same as [Hyper Analog](../hyper/README.md) |
+| RX | HPXGRC 2.4 GHz ExpressLRS ([Amazon listing](https://www.amazon.com/dp/B0H3NC7X1D): HPXGRC ELRS 2.4G receiver). Firmware 3.3.1, CRSF/SBUS, 25–500 Hz (D1000 Hz), 100 mW telemetry, IPEX1 40 mm T-dipole, 20×11 mm, 0.8 g ± 0.3 g without antenna. Input voltage TBD (not listed). On UART1 via CRSF. Fit testing in progress |
 | Battery | 3S, capacity TBD. Do not run the O4 Lite on 4S |
 | Props | 3-inch 2-blade, 3018/3020 class. 5022KV is high for aggressive triblades on 3S |
 | AUW | TBD. I will weigh it before the first flight. On a recreational flight, 250 g (0.55 lb) or less means I don't register or broadcast Remote ID. More than 250 g means I register, mark, and broadcast, or fly at a FRIA. |
@@ -50,7 +50,7 @@ Recorded 2026-11-20.
 
 - Backup: I skipped a fresh `diff`. The baseline is [Hyper Analog](../hyper/README.md)'s full CLI config. The FC is now mounted in normal orientation (not upside down), so board roll is 0 and Hyper Analog's motor remap does not carry over.
 - Flash: Betaflight 2026.6.2, target MATEKF411 (community target), full chip erase. Build options include HD OSD (MSP DisplayPort) for the O4 Lite, CRSF, and DShot/telemetry. SmartAudio/Tramp not needed.
-- Setup: I applied custom defaults, calibrated the accelerometer, and left board alignment at 0. UART1 is Serial RX (ELRS EP2, CRSF). UART2 is Peripherals "VTX (MSP + Displayport)" for the O4 Lite; no Configuration/MSP toggle needed. Motor resources are stock: MOTOR 1 B04, 2 B05, 3 B06, 4 B07. UART1 is A09/A10, UART2 is A02/A03.
+- Setup: I applied custom defaults, calibrated the accelerometer, and left board alignment at 0. UART1 is Serial RX (ELRS, CRSF). UART2 is Peripherals "VTX (MSP + Displayport)" for the O4 Lite; no Configuration/MSP toggle needed. Motor resources are stock: MOTOR 1 B04, 2 B05, 3 B06, 4 B07. UART1 is A09/A10, UART2 is A02/A03.
 - Motors: I checked and fixed motor order and direction (props-in).
 - Receiver/modes: CRSF, AETR1234, sticks verified. Arm on AUX1, Flip over after crash on AUX2. `set small_angle = 180` so it can arm upside down for turtle.
 - CPU/rates: `status` shows CPU 24%, gyro 8 kHz, OSD: MSP (53 x 20).
@@ -100,6 +100,7 @@ Repeat until it's within about 5%.
 ### Next
 
 - Bench check: OSD in the goggles, arm, failsafe test
+- Fit test the O4 antenna mount
 - Maiden
 - Current sensor (mAh) calibration
 - PID/rates tune
@@ -126,7 +127,7 @@ Recorded 2026-11-20.
 | Port | Setting |
 | --- | --- |
 | USB VCP | MSP on |
-| UART1 | Serial RX (ELRS EP2, CRSF) |
+| UART1 | Serial RX (HPXGRC 2.4 GHz ELRS, CRSF) |
 | UART2 | Peripherals "VTX (MSP + Displayport)" for the O4 Lite. No Configuration/MSP toggle needed |
 
 ### Modes
@@ -172,6 +173,7 @@ See Next steps below.
 ## Next steps
 
 - Bench check: OSD in the goggles, arm, failsafe test
+- Fit test the O4 antenna mount
 - Maiden
 - Current sensor (mAh) calibration
 - PID/rates tune
@@ -194,7 +196,7 @@ Hyper Digital 3S
 Frame: SoloGood 3-inch carbon (DJI O4)
 FC/ESC: DarwinFPV F411 AIO 15A (Bluejay 0.21.0)
 Motors: Pyrodrone Hyperlite 1303.5 5022KV
-RX: ELRS EP2 nano
+RX: HPXGRC 2.4G ELRS
 VTX: DJI O4 Lite (stock camera)
 Firmware: Betaflight 2026.6.2
 Battery: 3S
@@ -202,14 +204,22 @@ Props: 3-inch 2-blade, 3018/3020 class
 #fpv #fpvdrone #dji #o4lite #betaflight #expresslrs
 ```
 
+## 3D prints
+
+| Part | File | Print | Status |
+| --- | --- | --- | --- |
+| O4 antenna mount (TPU) | [o4pro-antenna-mount.3mf](o4pro-antenna-mount.3mf) | Overture TPU, 0.16 mm layers, 3 walls, 25% gyroid, no support, 225/35 °C, printed on a Flashforge AD5M | Fit testing in progress (not final) |
+
 ## Build log
 
-- 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Uses the same FC, motors, and EP2 receiver as Hyper Analog.
+- 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Same FC and motors as Hyper Analog.
 - 2026-11-20: Betaflight setup complete. I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, applied CPU/rates, HD OSD, and failsafe settings, and saved a `diff all`. Next: bench check (OSD in the goggles, arm, failsafe test), maiden, current calibration, and PID/rates tune.
+- 2026-11-21: I switched the receiver to an HPXGRC 2.4 GHz ExpressLRS and added the O4 antenna mount print (`o4pro-antenna-mount.3mf`). Fit testing is in progress.
 
 ## Links
 
 - [SoloGood 3-inch carbon frame for DJI O4](https://www.amazon.com/dp/B0F1F5YSMS)
+- [HPXGRC 2.4 GHz ExpressLRS receiver](https://www.amazon.com/dp/B0H3NC7X1D)
 - [DJI O4 Air Unit Series user manual](https://dl.djicdn.com/downloads/DJI_O4_Air_Unit_Series/UM/DJI_O4_Air_Unit_Series_User_Manual_v1.0_en.pdf)
 - [DJI Goggles 3 pairing and streaming](../../gear/dji-goggles-3/README.md) (PR #8)
 - [Hyper Analog](../hyper/README.md)
