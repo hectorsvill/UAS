@@ -206,6 +206,8 @@ Props: 3-inch 2-blade, 3018/3020 class
 
 ## 3D prints
 
+Print setup is in [TPU printing on the Flashforge Adventurer 5M](../../3d-printing/flashforge-ad5m-tpu.md).
+
 | Part | File | Print | Status |
 | --- | --- | --- | --- |
 | O4 antenna mount (TPU) | [o4pro-antenna-mount.3mf](o4pro-antenna-mount.3mf) | Overture TPU, 0.16 mm layers, 3 walls, 25% gyroid, no support, 225/35 °C, printed on a Flashforge AD5M | Fit testing in progress (not final) |
