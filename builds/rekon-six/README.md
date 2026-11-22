@@ -16,7 +16,7 @@ Status: On the bench
 | Props | iFlight Nazgul 5030 tri-blade ([official page](https://shop.iflight.com/nazgul-5030-tri-blade-prop-cw-ccw-3sets-pro1382)). Official specs: 5-inch, 3-blade, 3.0 pitch, 1.5 mm center hole, made for XING 2005 / XING2 1806 motors. That 1.5 mm hole matches this motor's 1.5 mm shaft, so they should mount directly. The official page does not list a 5 mm hub or T-mount |
 | AUW | TBD. I'll weigh it after the build |
 | Operating mode | Recreational by default. I only fly this aircraft under Part 107 for a project. |
-| Remote ID | TBD. I'll weigh it after the build. Under 250 g only exempts recreational flights; Part 107 operations need Remote ID regardless. [FAA Remote ID](https://www.faa.gov/uas/getting_started/remote_id) |
+| Remote ID | I'll fly this recreationally. If the all-up weight with the battery is under 250 g, no registration or Remote ID is needed. At 250 g or more, it needs FAA registration and Remote ID (a broadcast module). For Part 107 work, I'll register it and add a Remote ID module. [FAA Remote ID](https://www.faa.gov/uas/getting_started/remote_id) |
 | Betaflight config | See Betaflight & ESC setup and Full CLI config below. Link `configs/betaflight/rekon-six/` here once a dump exists |
 | Brain note | The full parts list with prices lives in my private notes |
 
