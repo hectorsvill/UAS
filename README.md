@@ -21,6 +21,10 @@ New build? Start from [builds/TEMPLATE.md](builds/TEMPLATE.md).
 
 Mark4 images: [F405.webp](builds/mark4-7inch/images/F405.webp), [gps-1.webp](builds/mark4-7inch/images/gps-1.webp), [gps-2.webp](builds/mark4-7inch/images/gps-2.webp), [gps3.webp](builds/mark4-7inch/images/gps3.webp), [gps-4.webp](builds/mark4-7inch/images/gps-4.webp).
 
+## Gear
+
+- [DJI Goggles 3](gear/dji-goggles-3/README.md) — pairing an O4 Lite and streaming the goggles view to a Mac
+
 ## 3D printing
 
 - [TPU on the Flashforge Adventurer 5M](3d-printing/flashforge-ad5m-tpu.md) — setup notes for TPU drone parts on the Adventurer 5M
