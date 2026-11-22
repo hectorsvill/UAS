@@ -4,13 +4,13 @@
   <img src="images/hyper-digital-front.jpg" alt="Hyper Digital front" width="70%">
 </p>
 
-Status: On the bench
+Status: In the hangar
 
 Digital version of [Hyper Analog](../hyper/README.md). Same FC and motors as Hyper Analog, on a SoloGood 3-inch frame with a DJI O4 Lite (O4 Air Unit) for digital video, because analog video quality was poor. The receiver is an HPXGRC 2.4 GHz ExpressLRS, not the EP2 used on Hyper Analog. I posted the finished build on [Instagram](https://www.instagram.com/p/DgBq82Zvkgh/).
 
 | Spec | Detail |
 | --- | --- |
-| Status | On the bench. Betaflight setup complete 2026-11-20. Fit testing in progress. Bench check (OSD in the goggles, arm, failsafe test), antenna-mount fit test, maiden, current calibration, and PID/rates tune still to do |
+| Status | In the hangar. Betaflight setup complete 2026-11-20. Current calibration and PID/rates tune still to do |
 | Frame | SoloGood 3-inch carbon frame for DJI O4 ([Amazon listing](https://www.amazon.com/dp/B0F1F5YSMS): 3 Inch Micro Carbon Fiber FPV Racing Quadcopter Frame For DJI O4 Air Unit). Wheelbase 135 mm, about 33 g, 14 mm camera bay, FC mounts 25.5×25.5 / 26.5×26.5 / 20×20 mm. 3K carbon; 3 mm bottom plate, 2 mm top plate, 1.5 mm side plates, 24 mm standoffs |
 | Motors | Pyrodrone Hyperlite 1303.5 5022KV ×4 (2–4S, discontinued). Same as [Hyper Analog](../hyper/README.md) |
 | FC/ESC | DarwinFPV F411 AIO, the same FC as [Hyper Analog](../hyper/README.md). STM32F411, 25.5×25.5 mm mount. ESC 15A continuous / 17A burst, EFM8BB21, Bluejay 0.21.0 on layout S-H-50 (was BLHeli_S 16.7). 1–3S only. 5V/2A BEC. See [Hyper Analog](../hyper/README.md) for the ESC setup |
@@ -215,6 +215,7 @@ Print setup is in [TPU printing on the Flashforge Adventurer 5M](../../3d-printi
 - 2026-11-20: Betaflight setup complete. I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, applied CPU/rates, HD OSD, and failsafe settings, and saved a `diff all`. Next: bench check (OSD in the goggles, arm, failsafe test), maiden, current calibration, and PID/rates tune.
 - 2026-11-21: I switched the receiver to an HPXGRC 2.4 GHz ExpressLRS and added the O4 antenna mount print (`3DPrints/o4pro-antenna-mount.3mf`). Fit testing is in progress.
 - 2026-11-21: I added a front photo of the finished build and posted it on [Instagram](https://www.instagram.com/p/DgBq82Zvkgh/).
+- 2026-11-21: I moved this build to In the hangar.
 
 ## Links
 
