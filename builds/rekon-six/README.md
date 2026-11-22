@@ -2,7 +2,7 @@
 
 Status: On the bench
 
-5-inch 6S build on an HGLRC Rekon 5 Lite frame, with iFlight XING 2005 1900KV motors, a SpeedyBee F405 AIO 40A, TBS Crossfire, and a planned DJI O4 Lite with a spare O4 Pro antenna.
+5-inch 6S build on an HGLRC Rekon 5 Lite frame, with iFlight XING 2005 1900KV motors, a SpeedyBee F405 AIO 40A, TBS Crossfire, a NewBeeDrone M10Q GPS, and a planned DJI O4 Lite with a spare O4 Pro antenna.
 
 | Spec | Detail |
 | --- | --- |
@@ -12,6 +12,7 @@ Status: On the bench
 | FC/ESC | SpeedyBee F405 AIO 40A ([official page](https://www.speedybee.com/speedybee-f405-aio-40a-bluejay-25-5x25-5-3-6s-flight-controller/)). STM32F405, ICM-42688P gyro, 3–6S, 40A continuous / 45A burst (10 s), Bluejay JH-40 48 kHz, current sensor scale 254 / offset 0, firmware target SPEEDYBEE F405AIO. Mounting is 25.5 × 25.5 mm with 2 mm holes, which matches the Rekon 5 Lite stack holes. The same official page lists the board size two ways (33.0 × 33.0 × 8 mm in the specs table, 36.5 × 36.5 × 7.0 mm in the fit note), so I'll confirm the board clears the stack when I install it. Four full UARTs (UART3, UART4, UART5, UART6, plus SBUS on R2). 5V BEC, 2A total; no onboard 9V BEC (an external module is included). The 6-pin DJI Sky Port is listed for O3 / RunCam Link / Caddx Vista; I'll confirm O4 Lite wiring before I plug it in. The official page lists this board as discontinued; I already have it |
 | VTX | DJI O4 Lite, planned, with a spare DJI O4 Pro antenna I already have |
 | RX | TBS Crossfire Nano RX ([official page](https://www.team-blacksheep.com/products/prod:crossfire_nano_rx)) via CRSF, controlled from a TBS Tango 2. Official specs: 11 × 18 × 11 mm, 0.5 g, 3.3–8.4 V input, CRSF / SBUS / PPM / PWM. UART assignment TBD |
+| GPS | NewBeeDrone M10Q Micro GPS Module with Compass ([official page](https://newbeedrone.com/products/newbeedrone-m10q-micro-gps-module-with-compass)). I'll use it for GPS Rescue and OSD position, wired to a spare SpeedyBee UART at 5V, and mount it on top away from the O4 Lite VTX and antenna. Official page: integrated compass (the manual image lists QMC5883), 5V power, ceramic antenna, protocol UBLOX + NMEA + PVT, and a JST 0.8 6-pin cable. A specific GPS chip part number is not listed; the official images call it an M10 / M10Q module. Official materials disagree on size and weight (text: 17 × 12 × 5 mm, 2.16 g; a product image says 15 × 17 mm and ~2.6 g; the manual image lists ~2.61 g), so I'll weigh it when it arrives. UART assignment TBD |
 | Battery | 6S, capacity TBD, XT30. The frame kit includes a battery anti-slip pad and two battery ties |
 | Props | iFlight Nazgul 5030 tri-blade ([official page](https://shop.iflight.com/nazgul-5030-tri-blade-prop-cw-ccw-3sets-pro1382)). Official specs: 5-inch, 3-blade, 3.0 pitch, 1.5 mm center hole, made for XING 2005 / XING2 1806 motors. That 1.5 mm hole matches this motor's 1.5 mm shaft, so they should mount directly. The official page does not list a 5 mm hub or T-mount |
 | AUW | TBD. I'll weigh it after the build |
@@ -26,13 +27,15 @@ Not flashed yet. The official target name is SPEEDYBEE F405AIO. I'll record the 
 
 ## Betaflight & ESC setup
 
-Not started. Planned ports: one UART for the Crossfire Nano RX (CRSF), and another for the O4 Lite (MSP DisplayPort) once that is installed. The F405 AIO has four full UARTs, so there is room for GPS later if I add it.
+Not started. Planned ports: one UART for the Crossfire Nano RX (CRSF), one for the O4 Lite (MSP DisplayPort) once that is installed, and a spare UART at 5V for the M10Q GPS. The F405 AIO has four full UARTs.
 
 ### Still to do
 
 - Flash Betaflight (target SPEEDYBEE F405AIO)
 - Confirm O4 Lite wiring on the 6-pin port
 - Wire and bind the Crossfire Nano RX
+- Wire the M10Q GPS to a spare UART at 5V and mount it on top, away from the O4 Lite VTX and antenna
+- Set up and field-test GPS Rescue
 - Choose 6S XT30 packs, an XT30 pigtail, and a low-ESR capacitor
 - Weigh the aircraft after the build, then decide on Remote ID
 
@@ -56,6 +59,7 @@ Motors: iFlight XING 2005 1900KV
 RX: TBS Crossfire Nano RX
 Radio: TBS Tango 2
 VTX: DJI O4 Lite (planned), O4 Pro antenna
+GPS: NewBeeDrone M10Q with compass
 Firmware: TBD
 Battery: 6S XT30
 Props: iFlight Nazgul 5030 tri-blade
@@ -67,6 +71,7 @@ Props: iFlight Nazgul 5030 tri-blade
 - 2026-11-21: Build started. I chose the name Rekon Six. Parts on hand or chosen: Rekon 5 Lite frame, XING 2005 1900KV motors, SpeedyBee F405 AIO 40A, and a TBS Crossfire Nano RX. I'm planning a DJI O4 Lite for video.
 - 2026-11-21: I chose a spare DJI O4 Pro antenna I already have, and iFlight Nazgul 5030 tri-blade props. I'll weigh the aircraft after the build before deciding on Remote ID.
 - 2026-11-21: Packs and the pigtail will be XT30, plus a low-ESR capacitor.
+- 2026-11-21: I'm adding a NewBeeDrone M10Q Micro GPS Module with Compass for GPS Rescue and OSD position. I'll wire it to a spare SpeedyBee UART at 5V and mount it on top, away from the O4 Lite VTX and antenna.
 
 ## Links
 
@@ -77,6 +82,7 @@ Props: iFlight Nazgul 5030 tri-blade
 - [SpeedyBee F405 AIO 40A (official)](https://www.speedybee.com/speedybee-f405-aio-40a-bluejay-25-5x25-5-3-6s-flight-controller/)
 - [TBS Crossfire Nano RX (official)](https://www.team-blacksheep.com/products/prod:crossfire_nano_rx)
 - [iFlight Nazgul 5030 tri-blade prop (official)](https://shop.iflight.com/nazgul-5030-tri-blade-prop-cw-ccw-3sets-pro1382)
+- [NewBeeDrone M10Q Micro GPS Module with Compass (official)](https://newbeedrone.com/products/newbeedrone-m10q-micro-gps-module-with-compass)
 - [FAA Remote ID](https://www.faa.gov/uas/getting_started/remote_id)
 - [FAA Remote ID Declaration of Compliance list](https://uasdoc.faa.gov/)
 
