@@ -12,7 +12,7 @@ Status: On the bench
 | FC/ESC | SpeedyBee F405 AIO 40A ([official page](https://www.speedybee.com/speedybee-f405-aio-40a-bluejay-25-5x25-5-3-6s-flight-controller/)). STM32F405, ICM-42688P gyro, 3–6S, 40A continuous / 45A burst (10 s), Bluejay JH-40 48 kHz, current sensor scale 254 / offset 0, firmware target SPEEDYBEE F405AIO. Mounting is 25.5 × 25.5 mm with 2 mm holes, which matches the Rekon 5 Lite stack holes. The same official page lists the board size two ways (33.0 × 33.0 × 8 mm in the specs table, 36.5 × 36.5 × 7.0 mm in the fit note), so I'll confirm the board clears the stack when I install it. Four full UARTs (UART3, UART4, UART5, UART6, plus SBUS on R2). 5V BEC, 2A total; no onboard 9V BEC (an external module is included). The 6-pin DJI Sky Port is listed for O3 / RunCam Link / Caddx Vista; I'll confirm O4 Lite wiring before I plug it in. The official page lists this board as discontinued; I already have it |
 | VTX | DJI O4 Lite, planned, with a spare DJI O4 Pro antenna I already have |
 | RX | TBS Crossfire Nano RX ([official page](https://www.team-blacksheep.com/products/prod:crossfire_nano_rx)) via CRSF, controlled from a TBS Tango 2. Official specs: 11 × 18 × 11 mm, 0.5 g, 3.3–8.4 V input, CRSF / SBUS / PPM / PWM. UART assignment TBD |
-| Battery | 6S, capacity TBD. The frame kit includes a battery anti-slip pad and two battery ties |
+| Battery | 6S, capacity TBD, XT30. The frame kit includes a battery anti-slip pad and two battery ties |
 | Props | iFlight Nazgul 5030 tri-blade ([official page](https://shop.iflight.com/nazgul-5030-tri-blade-prop-cw-ccw-3sets-pro1382)). Official specs: 5-inch, 3-blade, 3.0 pitch, 1.5 mm center hole, made for XING 2005 / XING2 1806 motors. That 1.5 mm hole matches this motor's 1.5 mm shaft, so they should mount directly. The official page does not list a 5 mm hub or T-mount |
 | AUW | TBD. I'll weigh it after the build |
 | Operating mode | Recreational by default. I only fly this aircraft under Part 107 for a project. |
@@ -33,7 +33,7 @@ Not started. Planned ports: one UART for the Crossfire Nano RX (CRSF), and anoth
 - Flash Betaflight (target SPEEDYBEE F405AIO)
 - Confirm O4 Lite wiring on the 6-pin port
 - Wire and bind the Crossfire Nano RX
-- Choose 6S packs, an XT60 pigtail, and a low-ESR capacitor
+- Choose 6S XT30 packs, an XT30 pigtail, and a low-ESR capacitor
 - Weigh the aircraft after the build, then decide on Remote ID
 
 ## Next steps
@@ -57,7 +57,7 @@ RX: TBS Crossfire Nano RX
 Radio: TBS Tango 2
 VTX: DJI O4 Lite (planned), O4 Pro antenna
 Firmware: TBD
-Battery: 6S
+Battery: 6S XT30
 Props: iFlight Nazgul 5030 tri-blade
 #fpv #fpvdrone #betaflight #crossfire
 ```
@@ -66,6 +66,7 @@ Props: iFlight Nazgul 5030 tri-blade
 
 - 2026-11-21: Build started. I chose the name Rekon Six. Parts on hand or chosen: Rekon 5 Lite frame, XING 2005 1900KV motors, SpeedyBee F405 AIO 40A, and a TBS Crossfire Nano RX. I'm planning a DJI O4 Lite for video.
 - 2026-11-21: I chose a spare DJI O4 Pro antenna I already have, and iFlight Nazgul 5030 tri-blade props. I'll weigh the aircraft after the build before deciding on Remote ID.
+- 2026-11-21: Packs and the pigtail will be XT30, plus a low-ESR capacitor.
 
 ## Links
 
