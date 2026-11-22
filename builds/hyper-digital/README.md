@@ -1,13 +1,12 @@
 # Hyper Digital
 
 <p align="center">
-  <img src="images/hyper-digital-front.jpg" alt="Hyper Digital front" width="45%">
-  <img src="images/hyper-digital-right.jpg" alt="Hyper Digital right side" width="45%">
+  <img src="images/hyper-digital-front.jpg" alt="Hyper Digital front" width="70%">
 </p>
 
 Status: On the bench
 
-Digital version of [Hyper Analog](../hyper/README.md). Same FC and motors as Hyper Analog, on a SoloGood 3-inch frame with a DJI O4 Lite (O4 Air Unit) for digital video, because analog video quality was poor. The receiver is an HPXGRC 2.4 GHz ExpressLRS, not the EP2 used on Hyper Analog.
+Digital version of [Hyper Analog](../hyper/README.md). Same FC and motors as Hyper Analog, on a SoloGood 3-inch frame with a DJI O4 Lite (O4 Air Unit) for digital video, because analog video quality was poor. The receiver is an HPXGRC 2.4 GHz ExpressLRS, not the EP2 used on Hyper Analog. I posted the finished build on [Instagram](https://www.instagram.com/p/DgBq82Zvkgh/).
 
 | Spec | Detail |
 | --- | --- |
@@ -180,12 +179,9 @@ See Next steps below.
 
 ## Photos
 
-I store photos in the `images/` folder next to this README and link them with relative paths; I keep each image under ~1 MB.
+The front photo is at the top of this page. I'll add the other angles as I take them.
 
-<p align="center">
-  <img src="images/hyper-digital-back.jpg" alt="Hyper Digital back" width="45%">
-  <img src="images/hyper-digital-left.jpg" alt="Hyper Digital left side" width="45%">
-</p>
+I store photos in the `images/` folder next to this README and link them with relative paths; I keep each image under ~1 MB.
 
 ## Parts list (copy/paste)
 
@@ -218,9 +214,11 @@ Print setup is in [TPU printing on the Flashforge Adventurer 5M](../../3d-printi
 - 2026-11-19: Planned. Digital version of [Hyper Analog](../hyper/README.md) on the SoloGood 3-inch frame with a DJI O4 Lite. Same FC and motors as Hyper Analog.
 - 2026-11-20: Betaflight setup complete. I mounted the FC in normal orientation, flashed Betaflight 2026.6.2 (MATEKF411, HD OSD), applied custom defaults, calibrated the accelerometer, and set UART1 to Serial RX and UART2 to VTX (MSP + Displayport). Motor resources are stock. I checked and fixed motor order and direction (props-in), set Arm on AUX1 and Flip over after crash on AUX2 with `small_angle` 180, applied CPU/rates, HD OSD, and failsafe settings, and saved a `diff all`. Next: bench check (OSD in the goggles, arm, failsafe test), maiden, current calibration, and PID/rates tune.
 - 2026-11-21: I switched the receiver to an HPXGRC 2.4 GHz ExpressLRS and added the O4 antenna mount print (`3DPrints/o4pro-antenna-mount.3mf`). Fit testing is in progress.
+- 2026-11-21: I added a front photo of the finished build and posted it on [Instagram](https://www.instagram.com/p/DgBq82Zvkgh/).
 
 ## Links
 
+- [Build post on Instagram](https://www.instagram.com/p/DgBq82Zvkgh/)
 - [SoloGood 3-inch carbon frame for DJI O4](https://www.amazon.com/dp/B0F1F5YSMS)
 - [HPXGRC 2.4 GHz ExpressLRS receiver](https://www.amazon.com/dp/B0H3NC7X1D)
 - [DJI O4 Air Unit Series user manual](https://dl.djicdn.com/downloads/DJI_O4_Air_Unit_Series/UM/DJI_O4_Air_Unit_Series_User_Manual_v1.0_en.pdf)
