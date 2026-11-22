@@ -10,7 +10,8 @@ I post on [Instagram @hectorsvill_uas](https://www.instagram.com/hectorsvill_uas
 
 | Photo | Build | Status | Summary |
 | --- | --- | --- | --- |
-| <img src="builds/hyper/images/hyper-front.jpg" alt="Hyper" width="120"> | [Hyper](builds/hyper/README.md) | In the hangar | 3S toothpick, Kabab TP3, Darwin F411 AIO, Bluejay, EP2 ELRS, VT5804 analog |
+| <img src="builds/hyper-digital/images/hyper-digital-front.jpg" alt="Hyper Digital" width="120"> | [Hyper Digital](builds/hyper-digital/README.md) | In the hangar | Digital Hyper: SoloGood 3-inch frame, Darwin F411 AIO, Bluejay, HPXGRC ELRS, DJI O4 Lite |
+| <img src="builds/hyper/images/hyper-front.jpg" alt="Hyper" width="120"> | [Hyper Analog](builds/hyper/README.md) | In the hangar | 3S toothpick, Kabab TP3, Darwin F411 AIO, Bluejay, EP2 ELRS, VT5804 analog |
 | <img src="builds/mark4-7inch/images/F405.webp" alt="Mark4 7-inch" width="120"> | [Mark4 7-inch](builds/mark4-7inch/README.md) | On the bench | 7-inch build on a REA Mark4 frame with 2807 1300KV motors, an F405 flight controller, a 60A 4-in-1 ESC, and GPS |
 | <img src="builds/glide5-deprecated/images/Glide5.png" alt="Glide5" width="120"> | [Glide5](builds/glide5-deprecated/README.md) | Retired | My earlier build, kept for reference with its photo and Betaflight backup |
 
@@ -23,6 +24,10 @@ Mark4 images: [F405.webp](builds/mark4-7inch/images/F405.webp), [gps-1.webp](bui
 ## Gear
 
 - [DJI Goggles 3](gear/dji-goggles-3/README.md) — pairing an O4 Lite and streaming the goggles view to a Mac
+
+## 3D printing
+
+- [TPU on the Flashforge Adventurer 5M](3d-printing/flashforge-ad5m-tpu.md) — setup notes for TPU drone parts on the Adventurer 5M
 
 ## Remote ID
 
