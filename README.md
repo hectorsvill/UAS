@@ -10,6 +10,7 @@ I post on [Instagram @hectorsvill_uas](https://www.instagram.com/hectorsvill_uas
 
 | Photo | Build | Status | Summary |
 | --- | --- | --- | --- |
+| | [Rekon Six](builds/rekon-six/README.md) | On the bench | 5-inch 6S: HGLRC Rekon 5 Lite, XING 2005 1900KV, SpeedyBee F405 AIO 40A, Crossfire, planned DJI O4 Lite |
 | <img src="builds/hyper-digital/images/hyper-digital-front.jpg" alt="Hyper Digital" width="120"> | [Hyper Digital](builds/hyper-digital/README.md) | In the hangar | Digital Hyper: SoloGood 3-inch frame, Darwin F411 AIO, Bluejay, HPXGRC ELRS, DJI O4 Lite |
 | <img src="builds/hyper/images/hyper-front.jpg" alt="Hyper" width="120"> | [Hyper Analog](builds/hyper/README.md) | In the hangar | 3S toothpick, Kabab TP3, Darwin F411 AIO, Bluejay, EP2 ELRS, VT5804 analog |
 | <img src="builds/mark4-7inch/images/F405.webp" alt="Mark4 7-inch" width="120"> | [Mark4 7-inch](builds/mark4-7inch/README.md) | On the bench | 7-inch build on a REA Mark4 frame with 2807 1300KV motors, an F405 flight controller, a 60A 4-in-1 ESC, and GPS |
