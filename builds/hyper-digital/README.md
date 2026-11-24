@@ -181,6 +181,10 @@ See Next steps below.
 
 The front photo is at the top of this page. I'll add the other angles as I take them.
 
+<img src="images/hyper-digital-field.jpg" alt="Hyper Digital at the field" width="70%">
+
+At the field on 2026-11-23, the day I got clean onboard footage.
+
 I store photos in the `images/` folder next to this README and link them with relative paths; I keep each image under ~1 MB.
 
 ## Parts list (copy/paste)
@@ -216,6 +220,7 @@ Print setup is in [TPU printing on the Flashforge Adventurer 5M](../../3d-printi
 - 2026-11-21: I switched the receiver to an HPXGRC 2.4 GHz ExpressLRS and added the O4 antenna mount print (`3DPrints/o4pro-antenna-mount.3mf`). Fit testing is in progress.
 - 2026-11-21: I added a front photo of the finished build and posted it on [Instagram](https://www.instagram.com/p/DgBq82Zvkgh/).
 - 2026-11-21: I moved this build to In the hangar.
+- 2026-11-23: My onboard O4 recordings were shaky even though the goggle feed looked smooth. I turned off Recording Stabilization (RockSteady) and set Wide FOV at 4:3, and the footage is clean now. I stabilize in Gyroflow when I need it. I also added a field photo.
 
 ## Links
 
